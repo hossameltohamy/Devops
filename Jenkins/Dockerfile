@@ -1,10 +1,15 @@
+FROM node as nodejs
 FROM jenkins/jenkins:lts
+COPY --from=nodejs /usr/local/bin/node /usr/local/bin/node
+
 USER root
 # create volumes 
 RUN  mkdir -p /var/jenkins_home
 RUN  chown -R 1000:1000 /var/jenkins_home/
 #RUN  mkdir -p /var/run/docker.sock
 #RUN  chmod 666 /var/run/docker.sock
+# install make 
+
 
 # create client docker inside jenkins
 RUN mkdir -p /tmp/download && \
@@ -14,7 +19,13 @@ RUN mkdir -p /tmp/download && \
   rm -rf /tmp/download && \
   groupadd -g 999 docker && \
   usermod -aG staff,docker jenkins
+#install docker-compose 
+RUN curl -L https://github.com/docker/compose/releases/download/1.26.0-rc3/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+RUN chmod +x /usr/local/bin/docker-compose
+RUN  ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+RUN node -v 
 
+ 
 # show endpoint
 RUN echo 'Jenkins installed'
 RUN echo 'You should now be able to access jenkins at: http://'$(curl -s ifconfig.co)':8080'

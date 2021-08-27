@@ -25,3 +25,24 @@ echo "Docker Engine Installed"
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 echo "Docker Compose Installed"
+
+# install jenkins 
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+sudo apt install jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+sudo ufw allow 8080
+sudo ufw allow OpenSSH
+sudo ufw enable
+echo "jenkins Installed"
+
+# install nodejs 
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+
+sudo apt install nodejs
+node -v
+echo "node Installed"
+
+

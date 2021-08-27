@@ -22,7 +22,9 @@ services:
     volumes:
       - /var/postgres-data:/var/lib/postgresql/data
   sonarqube:
-    image: sonarqube:community
+    # image: sonarqube:community
+    build:
+      context: ./sonarqube/. 
     restart: unless-stopped
     ports:
       - "9000:9000"
