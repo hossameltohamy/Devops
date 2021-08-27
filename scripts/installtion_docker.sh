@@ -36,7 +36,7 @@ sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sour
 sudo apt update
 sudo apt install jenkins
 #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9B7D32F2D50582E6
-systemctl status jenkins
+#systemctl status jenkins
 sudo ufw allow 8080
 sudo ufw allow OpenSSH
 sudo ufw enable
