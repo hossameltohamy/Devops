@@ -30,3 +30,4 @@ sudo apt-get install zip
 sudo mkdir -p /var/lib/gitlab-runner
 sudo gitlab-runner start 
 sudo apt-get install awscli -y
+ npm install forever
