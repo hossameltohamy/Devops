@@ -29,3 +29,4 @@ cd /var/run/ && sudo chmod 777 docker.pid docker.sock
 sudo apt-get install zip
 sudo mkdir -p /var/lib/gitlab-runner
 sudo gitlab-runner start 
+sudo apt-get install awscli -y
